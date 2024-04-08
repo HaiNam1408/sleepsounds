@@ -15,6 +15,7 @@ class ListViewCustom extends StatelessWidget {
         GestureDetector(
           onTap: (){},
           child: Stack(
+            alignment: Alignment.center,
             children: [
               Container(
                 width: 65.w,
@@ -28,18 +29,12 @@ class ListViewCustom extends StatelessWidget {
                   ),
                 ),
               ),
-              const Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    'Tiếng Mưa Xuân',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 30,
-                    ),
-                  ),
+              const Text(
+                'Tiếng Mưa Xuân',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 30,
                 ),
               ),
             ],
@@ -49,6 +44,7 @@ class ListViewCustom extends StatelessWidget {
         GestureDetector(
           onTap: (){},
           child: Stack(
+            alignment: Alignment.center,
             children: [
               Container(
                 width: 65.w,
@@ -62,18 +58,12 @@ class ListViewCustom extends StatelessWidget {
                   ),
                 ),
               ),
-              const Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    'Đêm yên bình',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 30,
-                    ),
-                  ),
+              const Text(
+                'Đêm yên bình',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 30,
                 ),
               ),
             ],
@@ -83,6 +73,7 @@ class ListViewCustom extends StatelessWidget {
         GestureDetector(
           onTap: (){},
           child: Stack(
+            alignment: Alignment.center,
             children: [
               Container(
                 width: 65.w,
@@ -96,18 +87,12 @@ class ListViewCustom extends StatelessWidget {
                   ),
                 ),
               ),
-              const Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text(
-                    'Mưa với piano',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 30,
-                    ),
-                  ),
+              const Text(
+                'Mưa với piano',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 30,
                 ),
               ),
             ],

@@ -50,6 +50,7 @@ flutter:
   assets:
      - assets/screen1/
      - assets/screen2/
+     - assets/screen3/
      - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
