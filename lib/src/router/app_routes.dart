@@ -5,6 +5,4 @@ class AppRoutes {
   static const String explore = '/explore';
   static const String setting = '/setting';
   static const String music = '/music';
-  static const String player = '/player';
-  static const String optionSound = '/option_sound';
 }
