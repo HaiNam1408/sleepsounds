@@ -5,6 +5,10 @@ import 'package:sleepsounds/src/modules/home/home_binding.dart';
 import 'package:sleepsounds/src/modules/home/home_screen.dart';
 import 'package:sleepsounds/src/modules/navbar/navbar_binding.dart';
 import 'package:sleepsounds/src/modules/navbar/navbar_screen.dart';
+import 'package:sleepsounds/src/modules/option_sound/option_sound_binding.dart';
+import 'package:sleepsounds/src/modules/option_sound/option_sound_screen.dart';
+import 'package:sleepsounds/src/modules/player/player_binding.dart';
+import 'package:sleepsounds/src/modules/player/player_screen.dart';
 import 'package:sleepsounds/src/modules/setting/setting_binding.dart';
 import 'package:sleepsounds/src/modules/setting/setting_screen.dart';
 import 'package:sleepsounds/src/router/app_routes.dart';
@@ -32,6 +36,16 @@ class AppPages {
       binding: ExploreBinding(),
       name: AppRoutes.explore,
       page: () => const ExploreScreen(),
+    ),
+    GetPage(
+      binding: PlayerBinding(),
+      name: AppRoutes.player,
+      page: () => const PlayerScreen(),
+    ),
+    GetPage(
+      binding: OptionSoundBinding(),
+      name: AppRoutes.optionSound,
+      page: () => const OptionSoundScreen(),
     )
   ];
 }
