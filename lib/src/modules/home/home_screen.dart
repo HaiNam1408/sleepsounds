@@ -8,7 +8,6 @@ import 'package:sleepsounds/src/modules/home/component/buttons_custom1.dart';
 import 'package:sleepsounds/src/modules/home/home_controller.dart';
 import 'package:sleepsounds/src/modules/home/component/listview.dart';
 import 'package:sleepsounds/src/modules/home/component/sliver_builder_custom.dart';
-import 'package:sleepsounds/src/router/app_routes.dart';
 
 
 
@@ -106,10 +105,7 @@ class HomeScreen extends GetView<HomeController> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20,0,20,0),
                         child: ListViewCustom(
-                            onTap: (){
-                              Get.toNamed(AppRoutes.player);
-                              // Get.to(PlayerScreen());
-                            },
+                            onTap: (){},
                             data: data
                         ),
                       ),
