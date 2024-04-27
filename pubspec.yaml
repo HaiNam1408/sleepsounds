@@ -26,6 +26,7 @@ dependencies:
   flutter_gif: ^0.0.4
   gif: ^2.3.0
   carousel_slider: ^4.0.0
+  flutter_time_picker_spinner: ^2.0.0
 
 dev_dependencies:
   flutter_test:

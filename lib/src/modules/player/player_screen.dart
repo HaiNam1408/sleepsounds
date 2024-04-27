@@ -7,6 +7,7 @@ import 'package:sleepsounds/src/modules/player/component/button_sound.dart';
 import 'package:sleepsounds/src/modules/player/component/timer.dart';
 import 'package:sleepsounds/src/modules/player/player_controller.dart';
 import 'package:sizer/sizer.dart';
+import 'package:sleepsounds/src/router/app_routes.dart';
 
 
 class PlayerScreen extends GetView<PlayerController> {
@@ -75,7 +76,9 @@ class PlayerScreen extends GetView<PlayerController> {
                           child: Align(
                             alignment: Alignment.center,
                             child: GestureDetector(
-                                onTap: (){},
+                                onTap: (){
+                                  Get.toNamed(AppRoutes.timerOption);
+                                },
                                 child: const Column(
                                   children: [
                                     Text(
