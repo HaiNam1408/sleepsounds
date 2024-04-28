@@ -7,4 +7,6 @@ class AppRoutes {
   static const String music = '/music';
   static const String player = '/player';
   static const String optionSound = '/option_sound';
+  static const String timerOption = '/timer_option';
+  static const String timerCustom = '/timer_custom';
 }

@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:sleepsounds/src/modules/custom_timer/custom_timer_binding.dart';
+import 'package:sleepsounds/src/modules/custom_timer/custom_timer_screen.dart';
 import 'package:sleepsounds/src/modules/explore/explore_binding.dart';
 import 'package:sleepsounds/src/modules/explore/explore_screen.dart';
 import 'package:sleepsounds/src/modules/home/home_binding.dart';
@@ -11,6 +13,8 @@ import 'package:sleepsounds/src/modules/player/player_binding.dart';
 import 'package:sleepsounds/src/modules/player/player_screen.dart';
 import 'package:sleepsounds/src/modules/setting/setting_binding.dart';
 import 'package:sleepsounds/src/modules/setting/setting_screen.dart';
+import 'package:sleepsounds/src/modules/timer_option/timer_option_binding.dart';
+import 'package:sleepsounds/src/modules/timer_option/timer_option_screen.dart';
 import 'package:sleepsounds/src/router/app_routes.dart';
 
 class AppPages {
@@ -46,6 +50,16 @@ class AppPages {
       binding: OptionSoundBinding(),
       name: AppRoutes.optionSound,
       page: () => const OptionSoundScreen(),
-    )
+    ),
+    GetPage(
+      binding: TimerOptionBinding(),
+      name: AppRoutes.timerOption,
+      page: () => const TimerOptionScreen(),
+    ),
+    GetPage(
+      binding: TimerCustomBinding(),
+      name: AppRoutes.timerCustom,
+      page: () => const TimerCustomScreen(),
+    ),
   ];
 }
