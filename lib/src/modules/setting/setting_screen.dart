@@ -7,6 +7,7 @@ import 'package:sleepsounds/src/modules/setting/component/text_1.dart';
 import 'package:sleepsounds/src/modules/setting/component/version_button.dart';
 import 'package:sleepsounds/src/modules/setting/setting_controller.dart';
 import 'package:sizer/sizer.dart';
+import 'package:sleepsounds/src/router/app_routes.dart';
 
 class SettingScreen extends GetView<SettingController> {
   const SettingScreen({super.key});
@@ -84,7 +85,9 @@ class SettingScreen extends GetView<SettingController> {
                     ListTile1(
                         text1: 'Nhắc nhở thời gian ngủ',
                         text2: 'Tắt',
-                        onTap: (){},
+                        onTap: (){
+                          Get.toNamed(AppRoutes.timeReminder);
+                        },
                         image: 'assets/screen3/bedtime.png'
                     ),
                     ListTile1(

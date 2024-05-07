@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:sleepsounds/src/modules/%20sleep_time_reminder/sleep_time_reminder_binding.dart';
+import 'package:sleepsounds/src/modules/%20sleep_time_reminder/sleep_time_reminder_screen.dart';
 import 'package:sleepsounds/src/modules/custom_timer/custom_timer_binding.dart';
 import 'package:sleepsounds/src/modules/custom_timer/custom_timer_screen.dart';
 import 'package:sleepsounds/src/modules/explore/explore_binding.dart';
@@ -60,6 +62,11 @@ class AppPages {
       binding: TimerCustomBinding(),
       name: AppRoutes.timerCustom,
       page: () => const TimerCustomScreen(),
+    ),
+    GetPage(
+      binding: TimeReminderBinding(),
+      name: AppRoutes.timeReminder,
+      page: () => const TimeReminderScreen(),
     ),
   ];
 }
