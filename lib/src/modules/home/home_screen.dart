@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:sleepsounds/src/modules/home/component/buttons_custom1.dart';
+import 'package:sleepsounds/src/modules/home/component/miniPlayer.dart';
 import 'package:sleepsounds/src/modules/home/home_controller.dart';
 import 'package:sleepsounds/src/modules/home/component/listview.dart';
 import 'package:sleepsounds/src/modules/home/component/sliver_builder_custom.dart';
@@ -119,6 +120,23 @@ class HomeScreen extends GetView<HomeController> {
                 ),
               ],
             ),
+          ),
+          GetBuilder<HomeController>(
+              builder:  (controller){
+                return Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.player);
+                    },
+                    child: miniPlayerCustom(
+                        visible: controller.showMiniPlayer
+                    ),
+                  )
+                );
+              }
           )
         ],
       ),

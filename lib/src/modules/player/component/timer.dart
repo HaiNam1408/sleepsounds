@@ -2,42 +2,45 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class CountdownTimer extends StatefulWidget {
-  const CountdownTimer({Key? key});
+  final int initialSecondsLeft;
+  final int fontSize;
+
+  const CountdownTimer({
+    Key? key,
+    required this.initialSecondsLeft,
+    required this.fontSize,
+  }) : super(key: key);
 
   @override
   _CountdownTimerState createState() => _CountdownTimerState();
 }
 
 class _CountdownTimerState extends State<CountdownTimer> {
-  static const maxSeconds = 20 * 60; // Example for 10 minutes
-  int secondsLeft = maxSeconds;
+  late int _secondsLeft;
   late Timer _timer;
 
   @override
   void initState() {
     super.initState();
+    _secondsLeft = widget.initialSecondsLeft;
     startTimer();
   }
 
   void startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (secondsLeft > 0) {
-        setState(() {
-          secondsLeft--;
-        });
-      } else {
-        _timer.cancel();
-      }
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_secondsLeft > 0) {
+          _secondsLeft--;
+        } else {
+          _timer.cancel();
+        }
+      });
     });
   }
 
-  void stopTimer() {
-    _timer.cancel();
-  }
-
   String formatTime(int seconds) {
-    final hours = seconds ~/ 3600; // Tính số giờ
-    final minutes = (seconds ~/ 60) % 60; // Tính số phút, loại bỏ số giờ
+    final hours = seconds ~/ 3600;
+    final minutes = (seconds ~/ 60) % 60;
     final secondsRemaining = seconds % 60;
     if (hours > 0) {
       return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${secondsRemaining.toString().padLeft(2, '0')}';
@@ -49,10 +52,10 @@ class _CountdownTimerState extends State<CountdownTimer> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      formatTime(secondsLeft),
-      style: const TextStyle(
+      formatTime(_secondsLeft),
+      style: TextStyle(
         color: Colors.white,
-        fontSize: 40,
+        fontSize: widget.fontSize.toDouble(),
         fontWeight: FontWeight.bold,
       ),
     );
@@ -60,7 +63,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
 
   @override
   void dispose() {
-    stopTimer();
+    _timer.cancel();
     super.dispose();
   }
 }
