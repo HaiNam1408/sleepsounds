@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           getPages: AppPages.pages,
           initialRoute: AppRoutes.navbar,
-          home: const NavbarScreen(),
+          home: NavbarScreen(),
           initialBinding: NavbarBinding(),
         );
       },
