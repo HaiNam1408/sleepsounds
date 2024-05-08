@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:sleepsounds/src/modules/player/player_controller.dart';
+import 'package:sleepsounds/src/modules/player/player_screen.dart';
 import 'package:sleepsounds/src/router/app_routes.dart';
 
 class ListViewCustom extends StatelessWidget {
   final List<Map<String, dynamic>> data;
-  const ListViewCustom({super.key, required this.data});
+  ListViewCustom({super.key, required this.data});
+  PlayerController playerController = Get.put(PlayerController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +25,9 @@ class ListViewCustom extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           onTap: () => {
-            Get.toNamed(AppRoutes.player, arguments: {
-              'name': data[index]['name'],
-              'sounds': data[index]['sounds']
-            })
+            playerController.initPlayer(data[index]['name'],
+                data[index]['image'], data[index]['sounds']),
+            Get.to(const PlayerScreen()),
           },
           child: Stack(
             children: [

@@ -17,9 +17,9 @@ class AudioHandler {
     players.add(player);
   }
 
-  Future<void> playSounds() async {
+  void playSounds() {
     for (AudioPlayer player in players) {
-      await player.play();
+      player.play();
     }
   }
 

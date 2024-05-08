@@ -24,21 +24,21 @@ class HomeScreen extends GetView<HomeController> {
         "image":
             "https://media.istockphoto.com/id/502324324/photo/enjoyment.jpg?s=612x612&w=0&k=20&c=6PPFSorv0D_U7r3JQlymioQLfeqXyzCVNySJHVEOmEA=",
         "id": "2",
-        "sounds": ['assets/audio/spring_rain.mp3']
+        "sounds": ['assets/audio/piano.mp3', 'assets/audio/spring_rain.mp3']
       },
       {
         "name": "Mưa trong Rừng",
         "image":
             "https://i.pinimg.com/originals/2d/27/91/2d2791281c3f4dc5ba5833886dd1db54.jpg",
         "id": "3",
-        "sounds": ['assets/audio/spring_rain.mp3']
+        "sounds": ['assets/audio/forest_rain.mp3']
       },
       {
         "name": "Mưa trên mái nhà",
         "image":
             "https://www.roofonemichigan.com/wp-content/uploads/2018/07/65459917_s.jpg",
         "id": "4",
-        "sounds": ['assets/audio/spring_rain.mp3']
+        "sounds": ['assets/audio/rooftop_rain.mp3']
       },
       {
         "name": "Mưa nhẹ",

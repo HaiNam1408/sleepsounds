@@ -5,20 +5,26 @@ import 'package:sleepsounds/src/services/audio_handler/audio_handler.dart';
 
 class PlayerController extends GetxController {
   final arguments = Get.arguments;
-  late final String name;
+  final RxString name = ''.obs;
+  final RxString image = ''.obs;
   final RxList<String> sounds = [''].obs;
   final RxBool isPlaying = true.obs;
   late Timer timer;
   final RxInt secondsLeft = (60 * 60).obs;
   final RxBool isShowTimer = true.obs;
   final Rx<DateTime> selectedTime = DateTime(0, 0, 0, 0, 30).obs;
+  bool isInit = false;
 
   @override
   void onInit() {
-    name = arguments['name'];
-    sounds.value = arguments['sounds'];
-    startTimer();
-    playSound();
+    // name = arguments?['name'] ?? 'Unknow';
+    // sounds.value = arguments?['sounds'] ?? [''];
+    // if (arguments != null) {
+    // startTimer();
+    // if (sounds[0] != '') {
+    //   playSound();
+    // }
+    // }
     super.onInit();
   }
 
@@ -26,6 +32,40 @@ class PlayerController extends GetxController {
   void onClose() {
     AudioHandler().disposeSounds();
     super.onClose();
+  }
+
+  void initPlayer(String name, String image, List<String> sounds) {
+    if (isInit == false) {
+      isInit = true;
+    } else {
+      resetPlayer();
+    }
+    setName(name);
+    setImage(image);
+    setSounds(sounds);
+    startTimer();
+    playSound();
+  }
+
+  void resetPlayer() {
+    setName('');
+    setSounds(['']);
+    setImage('');
+    stopTimer();
+    secondsLeft.value = 60 * 60;
+    AudioHandler().disposeSounds();
+  }
+
+  void setSounds(List<String> sounds) {
+    this.sounds.value = sounds;
+  }
+
+  void setName(String name) {
+    this.name.value = name;
+  }
+
+  void setImage(String image) {
+    this.image.value = image;
   }
 
   void changeSelectedTime(DateTime time) {
@@ -82,14 +122,14 @@ class PlayerController extends GetxController {
     for (int i = 0; i < sounds.length; i++) {
       await AudioHandler().addPlayer(sounds[i]);
     }
-    await AudioHandler().playSounds();
+    AudioHandler().playSounds();
   }
 
   Future<void> resumeSound() async {
     isPlaying.value = !isPlaying.value;
     if (isPlaying.value) {
       startTimer();
-      await AudioHandler().playSounds();
+      AudioHandler().playSounds();
     } else {
       stopTimer();
       await AudioHandler().pauseSounds();

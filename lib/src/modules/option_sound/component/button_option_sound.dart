@@ -9,7 +9,13 @@ class BtnOptionSound extends StatefulWidget {
   final VoidCallback onTap;
   final bool hideBtnClose;
   final ValueChanged<double> onChanged;
-  const BtnOptionSound({super.key, required this.text, required this.image, required this.onTap, required this.hideBtnClose, required this.onChanged});
+  const BtnOptionSound(
+      {super.key,
+      required this.text,
+      required this.image,
+      required this.onTap,
+      required this.hideBtnClose,
+      required this.onChanged});
 
   @override
   State<BtnOptionSound> createState() => _BtnOptionSoundState();
@@ -24,8 +30,8 @@ class _BtnOptionSoundState extends State<BtnOptionSound> {
       child: Column(
         children: [
           Container(
-            width: 80,
-            height: 80,
+            width: 60,
+            height: 60,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 gradient: LinearGradient(
@@ -34,43 +40,45 @@ class _BtnOptionSoundState extends State<BtnOptionSound> {
                     colors: [
                       Colors.purpleAccent,
                       Colors.deepPurpleAccent,
-                    ]
-                )
-            ),
+                    ])),
             child: Stack(
               children: [
                 Align(
                     alignment: Alignment.center,
-                    child: Image.asset(widget.image,color: Colors.white, width: 35,)
-                ),
+                    child: Image.asset(
+                      widget.image,
+                      color: Colors.white,
+                      width: 28,
+                    )),
                 if (widget.hideBtnClose)
                   Positioned(
-                      right: 3,
-                      top: 3,
+                      right: 2,
+                      top: 2,
                       child: GestureDetector(
                         onTap: widget.onTap,
-                        child: Icon(
+                        child: const Icon(
                           Icons.close,
                           color: Colors.white60,
+                          size: 20,
                         ),
-                      )
-                  )
+                      ))
               ],
             ),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Text(
-              widget.text,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w400
-            ),
+            widget.text,
+            style: const TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
           ),
           SliderTheme(
-            data: SliderThemeData(
+            data: const SliderThemeData(
               trackShape: RectangularSliderTrackShape(),
-              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0), // Hình dạng của thumb (điểm điều chỉnh)
+              thumbShape: RoundSliderThumbShape(
+                  enabledThumbRadius:
+                      10.0), // Hình dạng của thumb (điểm điều chỉnh)
               overlayShape: RoundSliderOverlayShape(overlayRadius: 17.0),
             ),
             child: Slider(
@@ -78,13 +86,12 @@ class _BtnOptionSoundState extends State<BtnOptionSound> {
                 min: 0.0,
                 max: 1.0,
                 divisions: 100,
-                onChanged: (double value){
+                onChanged: (double value) {
                   setState(() {
                     _currentVolume = value;
                   });
                   widget.onChanged(value);
-                }
-            ),
+                }),
           )
         ],
       ),

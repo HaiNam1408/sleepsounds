@@ -43,58 +43,48 @@ class OptionSoundScreen extends GetView<OptionSoundScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Lựa chọn hiện tại',
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color: Colors.white70
-                  ),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.white70),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 SizedBox(
                   height: 160,
                   child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.horizontal,
                       itemCount: data.length,
-                      itemBuilder: (context, index){
+                      itemBuilder: (context, index) {
                         return Row(
                           children: [
                             BtnOptionSound(
-                              onTap: (){},
-                              onChanged: ((value) {
-
-                              }),
+                              onTap: () {},
+                              onChanged: ((value) {}),
                               hideBtnClose: true,
                               text: data[index]['name'],
                               image: data[index]['icon'],
                             ),
                           ],
                         );
-                      }
-                  ),
+                      }),
                 ),
-                Text(
+                const Text(
                   'Tất cả Âm thanh',
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
-                      color: Colors.white70
-                  ),
+                      color: Colors.white70),
                 ),
-                GridViewCustom(
-                    data: data,
-                    hideBtnClose: false
-                ),
+                GridViewCustom(data: data, hideBtnClose: false),
               ],
             ),
           ),
-          Positioned(
-            left: 30,
-            right: 30,
-            bottom: 20,
-              child: BottomButtons()
-          )
+          const Positioned(
+              left: 30, right: 30, bottom: 20, child: BottomButtons())
         ],
       ),
     );

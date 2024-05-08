@@ -7,11 +7,17 @@ import 'package:sleepsounds/src/common/themes/app_size.dart';
 import 'package:sleepsounds/src/modules/explore/explore_screen.dart';
 import 'package:sleepsounds/src/modules/home/home_screen.dart';
 import 'package:sleepsounds/src/modules/navbar/navbar_controller.dart';
+import 'package:sleepsounds/src/modules/player/component/timer.dart';
+import 'package:sleepsounds/src/modules/player/player_controller.dart';
+import 'package:sleepsounds/src/modules/player/player_screen.dart';
 import 'package:sleepsounds/src/modules/setting/setting_screen.dart';
 
-class NavbarScreen extends GetView<NavbarController> {
+class NavbarScreen extends StatelessWidget {
   NavbarScreen({super.key});
   final ValueNotifier<double> playerExpandProgress = ValueNotifier(80);
+  PlayerController playerCtrl = Get.put(PlayerController());
+  NavbarController controller = Get.put(NavbarController());
+  static double minHeight = 64;
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +38,82 @@ class NavbarScreen extends GetView<NavbarController> {
                 .values
                 .toList()
               ..add(Offstage(
-                offstage: false,
+                offstage: playerCtrl.name.value == '',
                 child: Miniplayer(
-                  minHeight: 80,
+                  minHeight: minHeight,
                   maxHeight: 100.h,
                   valueNotifier: playerExpandProgress,
                   builder: (height, percentage) {
-                    return Container(
-                      color: Colors.black,
-                      child: Center(child: Text('$height, $percentage')),
-                    );
+                    if (playerCtrl.name.value == '') {
+                      return const SizedBox.shrink();
+                    }
+                    if (height < minHeight + 80) {
+                      return Container(
+                        color: AppColors.primary,
+                        padding: const EdgeInsets.all(4),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Image(
+                                      image:
+                                          NetworkImage(playerCtrl.image.value),
+                                      width: 60,
+                                      height: 60,
+                                      fit: BoxFit.cover),
+                                  const SizedBox(width: 8),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        playerCtrl.name.value,
+                                        style: TextStyle(
+                                            color: AppColors.white,
+                                            fontSize: 16),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.access_time_outlined,
+                                            color: AppColors.white,
+                                            size: 16,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          const CountdownTimer(fonsize: 12)
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(children: [
+                                IconButton(
+                                    onPressed: () {
+                                      playerCtrl.resumeSound();
+                                    },
+                                    icon: Obx(() => Icon(
+                                          playerCtrl.isPlaying.value
+                                              ? Icons.pause
+                                              : Icons.play_arrow,
+                                          color: AppColors.white,
+                                        ))),
+                                IconButton(
+                                    onPressed: () {
+                                      playerCtrl.resetPlayer();
+                                    },
+                                    icon: Icon(
+                                      Icons.close,
+                                      color: AppColors.white,
+                                    ))
+                              ])
+                            ]),
+                      );
+                    } else {
+                      return const PlayerScreen();
+                    }
                   },
                 ),
               )),

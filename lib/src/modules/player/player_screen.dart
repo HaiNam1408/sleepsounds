@@ -30,90 +30,94 @@ class PlayerScreen extends GetView<PlayerController> {
             ),
           ),
           title: Text(
-            controller.name,
+            controller.name.value,
             style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w500, fontSize: 26),
           ),
         ),
-        body: Stack(
+        body: Wrap(
           children: [
-            Container(
-              width: 100.w,
-              height: 100.h,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/background.png"),
-                  fit: BoxFit.cover,
+            Stack(
+              children: [
+                Container(
+                  width: 100.w,
+                  height: 100.h,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/background.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Positioned(
-                top: 50,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Column(
-                  children: [
-                    Stack(
+                Positioned(
+                    top: 50,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Column(
                       children: [
-                        // const Image(
-                        //     image: AssetImage(
-                        //         'assets/player_screen/gif_background.gif')),
-                        const SizedBox(
-                          width: 300,
-                          height: 300,
-                        ),
-                        Positioned.fill(
-                            child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.timerOption);
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Obx(() => controller.isShowTimer.value
-                                  ? const CountdownTimer()
-                                  : const SizedBox()),
-                              const Text(
-                                'Bộ đếm giờ',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
+                        Stack(
+                          children: [
+                            // const Image(
+                            //     image: AssetImage(
+                            //         'assets/player_screen/gif_background.gif')),
+                            const SizedBox(
+                              width: 300,
+                              height: 300,
+                            ),
+                            Positioned.fill(
+                                child: GestureDetector(
+                              onTap: () {
+                                Get.toNamed(AppRoutes.timerOption);
+                              },
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Obx(() => controller.isShowTimer.value
+                                      ? const CountdownTimer()
+                                      : const SizedBox()),
+                                  const Text(
+                                    'Bộ đếm giờ',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 16),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        )),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ButtonSound(
-                            text: '50%',
-                            image: 'assets/player_screen/rain.png'),
-                        SizedBox(
-                          width: 20,
+                            )),
+                          ],
                         ),
-                        ButtonSound(
-                            text: '50%',
-                            image: 'assets/player_screen/thunder.png'),
-                        SizedBox(
-                          width: 20,
+                        const SizedBox(
+                          height: 40,
                         ),
-                        ButtonSound(
-                            text: 'Sửa',
-                            image: 'assets/player_screen/edit.png'),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ButtonSound(
+                                text: '50%',
+                                image: 'assets/player_screen/rain.png'),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            ButtonSound(
+                                text: '50%',
+                                image: 'assets/player_screen/thunder.png'),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            ButtonSound(
+                                text: 'Sửa',
+                                image: 'assets/player_screen/edit.png'),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        const ButtonPlay()
                       ],
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    const ButtonPlay()
-                  ],
-                ))
+                    ))
+              ],
+            ),
           ],
         ));
   }
