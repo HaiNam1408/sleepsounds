@@ -14,6 +14,7 @@ class AudioHandler {
   Future<void> addPlayer(String path) async {
     final player = AudioPlayer();
     await player.setAsset(path);
+    await player.setLoopMode(LoopMode.all);
     players.add(player);
   }
 

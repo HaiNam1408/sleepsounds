@@ -70,15 +70,12 @@ class _BtnOptionSoundState extends State<BtnOptionSound> {
           ),
           Text(
             widget.text,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
+            style: const TextStyle(color: Colors.white),
           ),
           SliderTheme(
             data: const SliderThemeData(
               trackShape: RectangularSliderTrackShape(),
-              thumbShape: RoundSliderThumbShape(
-                  enabledThumbRadius:
-                      10.0), // Hình dạng của thumb (điểm điều chỉnh)
+              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
               overlayShape: RoundSliderOverlayShape(overlayRadius: 17.0),
             ),
             child: Slider(

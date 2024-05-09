@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+import 'package:sleepsounds/src/data/model/audio.dart';
+import 'package:sleepsounds/src/data/model/sound.dart';
 import 'package:sleepsounds/src/modules/home/component/buttons_custom1.dart';
 import 'package:sleepsounds/src/modules/home/component/miniPlayer.dart';
 import 'package:sleepsounds/src/modules/home/home_controller.dart';

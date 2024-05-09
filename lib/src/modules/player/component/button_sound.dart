@@ -7,13 +7,18 @@ import '../../../router/app_routes.dart';
 class ButtonSound extends StatelessWidget {
   final String text;
   final String image;
-  const ButtonSound({super.key, required this.text, required this.image});
+  final Function onTap;
+  const ButtonSound(
+      {super.key,
+      required this.text,
+      required this.image,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Get.toNamed(AppRoutes.optionSound);
+      onTap: () {
+        onTap();
       },
       child: Column(
         children: [
@@ -21,21 +26,25 @@ class ButtonSound extends StatelessWidget {
             width: 50,
             height: 50,
             decoration: const BoxDecoration(
-              color: Colors.white24,
-              borderRadius: BorderRadius.all(Radius.circular(5))
-            ),
+                color: Colors.white24,
+                borderRadius: BorderRadius.all(Radius.circular(5))),
             child: Center(
-              child: Image.asset(image,width: 30,color: Colors.white,),
+              child: Image.asset(
+                image,
+                width: 30,
+                color: Colors.white,
+              ),
             ),
           ),
-          const SizedBox(height: 5,),
+          const SizedBox(
+            height: 5,
+          ),
           Text(
             text,
             style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: Colors.white54
-            ),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.white54),
           )
         ],
       ),

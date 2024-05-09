@@ -51,7 +51,7 @@ class AppPages {
     GetPage(
       binding: OptionSoundBinding(),
       name: AppRoutes.optionSound,
-      page: () => const OptionSoundScreen(),
+      page: () => OptionSoundScreen(),
     ),
     GetPage(
       binding: TimerOptionBinding(),

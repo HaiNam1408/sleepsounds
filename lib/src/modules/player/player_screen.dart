@@ -1,9 +1,12 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:sleepsounds/src/modules/home/home_controller.dart';
+import 'package:sleepsounds/src/modules/option_sound/option_sound_screen.dart';
 import 'package:sleepsounds/src/modules/player/component/button_play.dart';
 import 'package:sleepsounds/src/modules/player/component/button_sound.dart';
 import 'package:sleepsounds/src/modules/player/component/timer.dart';
@@ -92,24 +95,31 @@ class PlayerScreen extends GetView<PlayerController> {
                         const SizedBox(
                           height: 40,
                         ),
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ButtonSound(
-                                text: '50%',
-                                image: 'assets/player_screen/rain.png'),
-                            SizedBox(
+                              text: '50%',
+                              image: 'assets/player_screen/rain.png',
+                              onTap: () {},
+                            ),
+                            const SizedBox(
                               width: 20,
                             ),
                             ButtonSound(
                                 text: '50%',
-                                image: 'assets/player_screen/thunder.png'),
-                            SizedBox(
+                                image: 'assets/player_screen/thunder.png',
+                                onTap: () {}),
+                            const SizedBox(
                               width: 20,
                             ),
                             ButtonSound(
                                 text: 'Sửa',
-                                image: 'assets/player_screen/edit.png'),
+                                image: 'assets/player_screen/edit.png',
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.optionSound,
+                                      arguments: {"sounds": controller.sounds});
+                                }),
                           ],
                         ),
                         const SizedBox(
