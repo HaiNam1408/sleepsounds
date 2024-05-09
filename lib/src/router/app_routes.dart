@@ -3,6 +3,7 @@ class AppRoutes {
   static const String navbar = '/navbar';
   static const String home = '/home';
   static const String explore = '/explore';
+  static const String exploreSound = '/explore_sound';
   static const String setting = '/setting';
   static const String music = '/music';
   static const String player = '/player';
