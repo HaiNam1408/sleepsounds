@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:sleepsounds/src/modules/home/home_controller.dart';
 import 'package:sleepsounds/src/modules/player/component/button_play.dart';
 import 'package:sleepsounds/src/modules/player/component/button_sound.dart';
 import 'package:sleepsounds/src/modules/player/component/timer.dart';
@@ -21,7 +23,7 @@ class PlayerScreen extends GetView<PlayerController> {
           backgroundColor: Colors.transparent,
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
             icon: const Icon(
               Icons.keyboard_arrow_down,
