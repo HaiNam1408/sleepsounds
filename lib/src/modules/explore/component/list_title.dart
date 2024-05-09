@@ -1,5 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../router/app_routes.dart';
+import '../../explore_sound/explore_sound_screen.dart';
+
 
 class ListTitleCustom extends StatelessWidget {
   const ListTitleCustom({super.key});
@@ -11,7 +16,9 @@ class ListTitleCustom extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       children: [
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            Get.to(const ExploreSoundScreen('Ngủ'));
+          },
           child: const ListTile(
             leading: Padding(
               padding: EdgeInsets.only(right: 15),
@@ -46,7 +53,9 @@ class ListTitleCustom extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            Get.to(const ExploreSoundScreen('Thư giản'));
+          },
           child: const ListTile(
             leading: Padding(
               padding: EdgeInsets.only(right: 15),
@@ -81,7 +90,9 @@ class ListTitleCustom extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            Get.to(const ExploreSoundScreen('Làm việc'));
+          },
           child: const ListTile(
             leading: Padding(
               padding: EdgeInsets.only(right: 15),
@@ -91,7 +102,7 @@ class ListTitleCustom extends StatelessWidget {
               ),
             ),
             title: Text(
-              'Thư giản',
+              'Làm việc',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -116,7 +127,9 @@ class ListTitleCustom extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            Get.to(const ExploreSoundScreen('Thiền'));
+          },
           child: const ListTile(
             leading: Padding(
               padding: EdgeInsets.only(right: 15),

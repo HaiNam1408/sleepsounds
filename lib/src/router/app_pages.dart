@@ -5,6 +5,8 @@ import 'package:sleepsounds/src/modules/custom_timer/custom_timer_binding.dart';
 import 'package:sleepsounds/src/modules/custom_timer/custom_timer_screen.dart';
 import 'package:sleepsounds/src/modules/explore/explore_binding.dart';
 import 'package:sleepsounds/src/modules/explore/explore_screen.dart';
+import 'package:sleepsounds/src/modules/explore_sound/explore_sound_binding.dart';
+import 'package:sleepsounds/src/modules/explore_sound/explore_sound_screen.dart';
 import 'package:sleepsounds/src/modules/home/home_binding.dart';
 import 'package:sleepsounds/src/modules/home/home_screen.dart';
 import 'package:sleepsounds/src/modules/navbar/navbar_binding.dart';
