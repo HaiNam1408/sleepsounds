@@ -1,27 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:sizer/sizer.dart';
 import 'package:sleepsounds/src/modules/option_sound/component/bottom_buttons.dart';
 import 'package:sleepsounds/src/modules/option_sound/component/button_option_sound.dart';
 import 'package:sleepsounds/src/modules/option_sound/component/grid_view.dart';
+import 'package:sleepsounds/src/modules/option_sound/option_sound_controller.dart';
 
-class OptionSoundScreen extends GetView<OptionSoundScreen> {
-  const OptionSoundScreen({super.key});
+class OptionSoundScreen extends GetView<OptionSoundController> {
+  final List<String> listSound;
+  const OptionSoundScreen({super.key, this.listSound = const []});
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> data = [
-      {
-        "name": "Mưa rơi",
-        "icon": "assets/player_screen/rain.png",
-      },
-      {
-        "name": "Tiếng sấm",
-        "icon": "assets/player_screen/thunder.png",
-      },
-    ];
-
+    controller.setListSound(listSound);
     return Scaffold(
       body: Stack(
         children: [
@@ -43,58 +35,54 @@ class OptionSoundScreen extends GetView<OptionSoundScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Lựa chọn hiện tại',
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    color: Colors.white70
-                  ),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.white70),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 SizedBox(
-                  height: 160,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                      itemCount: data.length,
-                      itemBuilder: (context, index){
-                        return Row(
-                          children: [
-                            BtnOptionSound(
-                              onTap: (){},
-                              onChanged: ((value) {
-
-                              }),
-                              hideBtnClose: true,
-                              text: data[index]['name'],
-                              image: data[index]['icon'],
-                            ),
-                          ],
-                        );
-                      }
-                  ),
-                ),
-                Text(
+                    height: 160,
+                    child: Obx(
+                      () => ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: controller.listSound.length,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: [
+                                Obx(() => BtnOptionSound(
+                                      onTap: () {
+                                        controller.changeListSound(
+                                            controller.listSound[index]['sound']
+                                                as String);
+                                      },
+                                      onChanged: ((value) {}),
+                                      hideBtnClose: true,
+                                      text: controller.listSound[index]['name'],
+                                      image: controller.listSound[index]
+                                          ['icon'],
+                                    )),
+                              ],
+                            );
+                          }),
+                    )),
+                const Text(
                   'Tất cả Âm thanh',
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
-                      color: Colors.white70
-                  ),
+                      color: Colors.white70),
                 ),
-                GridViewCustom(
-                    data: data,
-                    hideBtnClose: false
-                ),
+                GridViewCustom(data: controller.data, hideBtnClose: false),
               ],
             ),
           ),
-          Positioned(
-            left: 30,
-            right: 30,
-            bottom: 20,
-              child: BottomButtons()
-          )
+          const Positioned(
+              left: 30, right: 30, bottom: 20, child: BottomButtons())
         ],
       ),
     );

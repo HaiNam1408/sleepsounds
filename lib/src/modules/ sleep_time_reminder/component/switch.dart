@@ -13,7 +13,7 @@ class SwitchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Switch(
-      trackOutlineColor: MaterialStateColor.transparent,
+      trackOutlineColor: MaterialStateProperty.all(Colors.transparent),
       inactiveTrackColor: Colors.white60,
       inactiveThumbColor: Colors.white,
       activeTrackColor: Colors.purple,

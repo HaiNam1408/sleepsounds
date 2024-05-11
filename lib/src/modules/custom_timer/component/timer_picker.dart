@@ -1,19 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
+import 'package:get/instance_manager.dart';
 import 'package:sizer/sizer.dart';
-import 'package:sleepsounds/src/modules/option_sound/component/bottom_buttons.dart';
-import 'package:sleepsounds/src/modules/timer_option/component/bottom_buttons.dart';
+import 'package:sleepsounds/src/modules/player/player_controller.dart';
 
-class TimerPicker extends StatefulWidget {
-  const TimerPicker({super.key});
+class TimerPicker extends StatelessWidget {
+  TimerPicker({super.key});
+  PlayerController controller = Get.put(PlayerController());
 
-  @override
-  State<TimerPicker> createState() => _TimerPickerState();
-}
-
-class _TimerPickerState extends State<TimerPicker> {
-  TimeOfDay _selectedTime = const TimeOfDay(hour: 0, minute: 0);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,45 +15,40 @@ class _TimerPickerState extends State<TimerPicker> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Giờ',
               style: TextStyle(
-                color: Colors.white60,
-                fontWeight: FontWeight.w500,
-                fontSize: 20
-              ),
+                  color: Colors.white60,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16),
             ),
             TimePickerSpinner(
+              time: controller.selectedTime.value,
               alignment: Alignment.center,
               isForce2Digits: true,
               is24HourMode: true,
               isShowSeconds: false,
-              normalTextStyle: TextStyle(
-                color: Colors.white60,
-                fontSize: 50,
-                fontWeight: FontWeight.bold
-              ),
-              highlightedTextStyle: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 50
-              ),
+              normalTextStyle: const TextStyle(
+                  color: Colors.white60,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold),
+              highlightedTextStyle: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40),
               itemHeight: 80,
               itemWidth: 25.w,
               spacing: 0,
               onTimeChange: (time) {
-                setState(() {
-                  _selectedTime = time as TimeOfDay;
-                });
+                controller.changeSelectedTime(time);
               },
             ),
-            Text(
+            const Text(
               'Phút',
               style: TextStyle(
                   color: Colors.white60,
                   fontWeight: FontWeight.w500,
-                  fontSize: 20
-              ),
+                  fontSize: 16),
             ),
           ],
         ),

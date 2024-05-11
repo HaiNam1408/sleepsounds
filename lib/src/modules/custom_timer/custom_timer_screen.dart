@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:sizer/sizer.dart';
+import 'package:sleepsounds/src/common/themes/app_colors.dart';
 import 'package:sleepsounds/src/modules/custom_timer/component/timer_picker.dart';
 import 'package:sleepsounds/src/modules/custom_timer/custom_timer_controller.dart';
 
@@ -16,12 +16,12 @@ class TimerCustomScreen extends GetView<TimerCustomController> {
         body: Container(
       width: 100.w,
       height: 100.h,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.deepPurpleAccent,
+              AppColors.primary,
               Colors.deepPurple,
             ]),
       ),
@@ -33,27 +33,21 @@ class TimerCustomScreen extends GetView<TimerCustomController> {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Tùy chỉnh',
                     style: TextStyle(
                         color: Colors.white70,
                         fontWeight: FontWeight.w500,
                         fontSize: 18),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
-                  SizedBox(
-                    width: 100.w,
-                      child: TimerPicker()
-                  ),
+                  SizedBox(width: 100.w, child: TimerPicker()),
                 ],
               ),
             ),
-            Positioned(
-              bottom: 50,
-                child: BottomButton()
-            ),
+            Positioned(bottom: 50, child: BottomButton()),
           ],
         ),
       ),

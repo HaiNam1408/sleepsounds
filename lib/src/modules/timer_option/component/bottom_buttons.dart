@@ -1,10 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 import 'package:sizer/sizer.dart';
+import 'package:sleepsounds/src/modules/player/player_controller.dart';
 
 class BottomButton extends StatelessWidget {
-  const BottomButton({super.key});
+  BottomButton({super.key});
+  final PlayerController controller = Get.put(PlayerController());
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class BottomButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
           child: Column(
@@ -26,18 +28,15 @@ class BottomButton extends StatelessWidget {
                 ),
                 child: const Center(
                     child: Image(
-                      image: AssetImage('assets/player_screen/cancel.png'),
-                      width: 15,
-                      height: 15,
-                      color: Colors.white,
-                    )
-                ),
+                  image: AssetImage('assets/player_screen/cancel.png'),
+                  width: 15,
+                  height: 15,
+                  color: Colors.white,
+                )),
               ),
               const Text(
                 'Cancel',
-                style: TextStyle(
-                    color: Colors.white38
-                ),
+                style: TextStyle(color: Colors.white38),
               )
             ],
           ),
@@ -47,7 +46,9 @@ class BottomButton extends StatelessWidget {
           child: Column(
             children: [
               GestureDetector(
-                onTap: (){},
+                onTap: () {
+                  controller.customSecondsLeft();
+                },
                 child: Column(
                   children: [
                     Container(
@@ -61,19 +62,18 @@ class BottomButton extends StatelessWidget {
                                 colors: [
                                   Colors.purpleAccent,
                                   Colors.deepPurpleAccent,
-                                ]
-                            )
-                        ),
+                                ])),
                         child: const Icon(
                           Icons.check_outlined,
                           size: 40,
                           color: Colors.white,
-                        )
-                    ),
+                        )),
                   ],
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),

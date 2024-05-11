@@ -28,7 +28,7 @@ class AppPages {
     GetPage(
       binding: NavbarBinding(),
       name: AppRoutes.navbar,
-      page: () => const NavbarScreen(),
+      page: () => NavbarScreen(),
     ),
     GetPage(
       binding: HomeBinding(),
@@ -53,12 +53,12 @@ class AppPages {
     GetPage(
       binding: OptionSoundBinding(),
       name: AppRoutes.optionSound,
-      page: () => const OptionSoundScreen(),
+      page: () => OptionSoundScreen(),
     ),
     GetPage(
       binding: TimerOptionBinding(),
       name: AppRoutes.timerOption,
-      page: () => const TimerOptionScreen(),
+      page: () => TimerOptionScreen(),
     ),
     GetPage(
       binding: TimerCustomBinding(),

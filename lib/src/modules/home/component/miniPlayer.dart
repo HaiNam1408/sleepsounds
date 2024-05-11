@@ -13,7 +13,7 @@ class miniPlayerCustom extends StatelessWidget {
     return Visibility(
         visible: visible,
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           color: AppColors.primary.withOpacity(0.8),
           child: Padding(
@@ -21,17 +21,19 @@ class miniPlayerCustom extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
+                const Row(
                   children: [
                     SizedBox(
                       width: 60,
                       height: 60,
                       child: Image(
-                          image: AssetImage("assets/background.png"),
-                          fit: BoxFit.cover,
+                        image: AssetImage("assets/background.png"),
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -40,8 +42,7 @@ class miniPlayerCustom extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
-                              fontWeight: FontWeight.w400
-                          ),
+                              fontWeight: FontWeight.w400),
                         ),
                         Row(
                           children: [
@@ -50,10 +51,12 @@ class miniPlayerCustom extends StatelessWidget {
                               size: 20,
                               color: Colors.white,
                             ),
-                            SizedBox(width: 5,),
+                            SizedBox(
+                              width: 5,
+                            ),
                             CountdownTimer(
-                              initialSecondsLeft: 20*60,
-                              fontSize: 20,
+                              fonsize: 20,
+                              // initialSecondsLeft: 20*60,
                             )
                           ],
                         )
@@ -61,44 +64,46 @@ class miniPlayerCustom extends StatelessWidget {
                     ),
                   ],
                 ),
-                GetBuilder<HomeController>(
-                    builder: (controller) {
-                      return Row(
-                        children: [
-                          IconButton(
-                            onPressed: (){
-                              controller.updatePlaying();
-                            },
-                            icon: Icon(
-                                controller.isPlaying? Icons.pause : Icons.play_arrow,
-                              color: Colors.white,
-                              size: 40,
-                            ),
+                GetBuilder<HomeController>(builder: (controller) {
+                  return Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          controller.updatePlaying();
+                        },
+                        icon: Icon(
+                          controller.isPlaying ? Icons.pause : Icons.play_arrow,
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          controller.toggleMiniPlayer(false);
+                        },
+                        child: const SizedBox(
+                          width: 15,
+                          height: 15,
+                          child: Image(
+                            image:
+                                AssetImage("assets/player_screen/cancel.png"),
+                            fit: BoxFit.cover,
+                            color: Colors.white54,
                           ),
-                          SizedBox(width: 10,),
-                          GestureDetector(
-                            onTap:(){
-                              controller.toggleMiniPlayer(false);
-                            },
-                            child: SizedBox(
-                              width: 15,
-                              height: 15,
-                              child: Image(
-                                image: AssetImage("assets/player_screen/cancel.png"),
-                                fit: BoxFit.cover,
-                                color: Colors.white54,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 15,),
-                        ],
-                      );
-                    }
-                ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                    ],
+                  );
+                }),
               ],
             ),
           ),
-        )
-    );
+        ));
   }
 }
